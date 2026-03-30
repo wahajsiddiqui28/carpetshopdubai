@@ -1,3 +1,41 @@
+<style>
+/* ---- Top Bar ---- */
+.csd-topbar { background:#f3e2c3; height:45px; display:flex; align-items:center; overflow:hidden; }
+.csd-topbar-inner { width:90%; margin:auto; display:flex; justify-content:center; align-items:center; gap:10px; }
+
+/* ---- Topbar Ticker ---- */
+.topbar-ticker { position:relative; height:45px; display:flex; align-items:center; justify-content:center; flex:1; overflow:hidden; }
+.topbar-ticker-item {
+  position:absolute;
+  display:flex; align-items:center; gap:8px;
+  font-size:13px; font-weight:600; color:#5a3a1a;
+  white-space:nowrap;
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity 0.35s ease, transform 0.35s ease;
+  pointer-events:none;
+}
+.topbar-ticker-item.active  { opacity:1; transform:translateY(0); pointer-events:auto; }
+.topbar-ticker-item.exit    { opacity:0; transform:translateY(-20px); }
+.topbar-ticker-item .tb-icon  { font-size:16px; flex-shrink:0; }
+.topbar-ticker-item .tb-tabby {
+  background:#3d9970; color:#fff;
+  font-size:11px; font-weight:700;
+  padding:2px 6px; border-radius:4px;
+  letter-spacing:0.5px; flex-shrink:0;
+}
+.topbar-ticker-dots { display:flex; gap:6px; flex-shrink:0; align-items:center; }
+.topbar-ticker-dots span {
+  width:7px; height:7px; border-radius:50%;
+  background:rgba(90,58,26,0.25); cursor:pointer; transition:background 0.3s;
+}
+.topbar-ticker-dots span.active { background:#c47a2f; }
+@media(max-width:992px){
+  .topbar-ticker-item { font-size:12px; }
+  .topbar-ticker-dots { display:none; }
+}
+</style>
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-L2PRQTV4P7"></script>
 <script>
@@ -8,6 +46,48 @@
   gtag('config', 'G-L2PRQTV4P7');
 </script>
 
+<!-- ===== Sticky Wrapper: topbar + main header scroll together ===== -->
+<div class="sticky-header-wrap">
+
+<!-- Top header  -->
+<div class="csd-topbar">
+  <div class="csd-topbar-inner">
+
+    <div class="topbar-ticker" id="topbarTicker2">
+      <div class="topbar-ticker-item active"><span class="tb-icon">⭐</span><span>1450+ Satisfied Reviews</span></div>
+      <div class="topbar-ticker-item"><span class="tb-icon">🔄</span><span>30-Days Return Policy</span></div>
+      <div class="topbar-ticker-item"><span class="tb-tabby">tabby</span><span>Pay In Installments</span></div>
+      <div class="topbar-ticker-item"><span class="tb-icon">🚚</span><span>Free Delivery Across Dubai & UAE</span></div>
+    </div>
+
+    <div class="topbar-ticker-dots" id="topbarDots2">
+      <span class="active"></span><span></span><span></span><span></span>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  var items = document.querySelectorAll('#topbarTicker2 .topbar-ticker-item');
+  var dots  = document.querySelectorAll('#topbarDots2 span');
+  if(!items.length) return;
+  var current = 0;
+  function goTo(next){
+    items[current].classList.add('exit');
+    items[current].classList.remove('active');
+    dots[current] && dots[current].classList.remove('active');
+    setTimeout(function(){
+      items[current].classList.remove('exit');
+      current = next;
+      items[current].classList.add('active');
+      dots[current] && dots[current].classList.add('active');
+    }, 350);
+  }
+  dots.forEach(function(dot,i){ dot.addEventListener('click',function(){ if(i!==current) goTo(i); }); });
+  setInterval(function(){ goTo((current+1)%items.length); }, 2000);
+})();
+</script>
 <!-- Desktop Top Bar -->
 <div class="desktop-top-bar d-none d-lg-flex justify-content-end align-items-center px-4 py-2" style="background:#f3e2c4; color:#000; font-size:14px;">
     <div class="top-right d-flex gap-4">
@@ -16,10 +96,11 @@
     </div>
 </div>
 
-<!-- Mobile Top Contact Bar -->
+ <!-- Mobile Top Contact Bar -->
 <div class="mobile-contact-bar d-lg-none text-center py-2 d-none" style="background:#000; color:#fff; font-weight:700; height:35px; font-size:14px;">
     Call: <a href="tel:+971547794446" style="color:#fff; text-decoration: none !Important;">+971-54779-4446</a>
 </div>
+
 
 <!--Main Header-->
 <header class="main-header">
@@ -369,16 +450,22 @@
     </div>
 </header>
 
+</div><!-- ===== End sticky-header-wrap ===== -->
+
 <style>
-/* Header Styles */
-.main-header {
-    width: 100%;
-    background: #fff7ea;
+/* ---- Sticky wrapper: topbar + navbar together ---- */
+.sticky-header-wrap {
     position: sticky;
     top: 0;
     z-index: 9999;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    
+}
+
+/* Header Styles */
+.main-header {
+    width: 100%;
+    background: #fff7ea;
+    /* sticky removed — wrapper handles it */
 }
 
 .main-header .logo img {

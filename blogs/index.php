@@ -6,6 +6,14 @@ $blogUrl = $siteUrl . "/blogs";
 // Blog posts data
 $blogPosts = [
     [
+        'id' => 'why-choose-artificial-grass-carpet-in-dubai.php',
+        'title' => 'Why Choose Artificial Grass Carpet in Dubai?',
+        'excerpt' => 'Discover why artificial grass carpet is Dubai\'s top flooring choice. UV-resistant, low-maintenance & pet-safe. Get a free quote today.',
+        'date' => 'Mar 31, 2026',
+        'category' => 'Artificial Grass',
+        'readTime' => '7 min read'
+    ],
+    [
         'id' => 'where-to-buy-office-carpet-in-dubai.php',
         'title' => 'Where to Buy Office Carpet in Dubai – Best Suppliers & Buying Guide',
         'excerpt' => 'Find the best office carpet suppliers in Dubai. Compare tiles, wall-to-wall & custom options with expert tips for quality & pricing.',

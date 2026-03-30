@@ -1,6 +1,8 @@
 <!-- ======= Replacement Footer (Mobile Centered) ======= -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+<?php
+$base_url = "https://carpetshopdubai.com";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,6 +14,84 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- modern font stack: Inter + fallback -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet">
+    
+
+      <style>
+
+    .clients-section {
+
+      padding: 60px 0;
+
+      background: #f8f9fa;
+
+      text-align: center;
+
+    }
+
+    .clients-section h2 {
+
+      margin-bottom: 40px;
+
+      color: #1a3c34;
+
+      font-size: 2.5rem;
+
+    }
+
+    .clients-slider {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      padding: 20px 0;
+    }
+
+    .clients-slider-track {
+      display: flex;
+      flex-wrap: nowrap;
+      width: max-content;
+      animation: clientsScroll 25s linear infinite;
+    }
+
+    .clients-slide {
+      flex: 0 0 auto;
+      width: 220px;
+      height: 120px;
+      margin: 0 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      padding: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .clients-slide:hover {
+      transform: scale(1.08);
+    }
+
+    .clients-slide img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    @keyframes clientsScroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @media (max-width: 768px) {
+      .clients-slide {
+        width: 160px;
+        height: 90px;
+        margin: 0 20px;
+      }
+    }
+
+  </style>
+
     <style>
         /* -------------------------------
            FOOTER REDESIGN – MODERN, WARM, RESPONSIVE
@@ -110,6 +190,19 @@
         }
 
         .gallery img:hover {
+            transform: scale(1.03);
+            border-color: var(--accent-soft);
+        }
+
+        /* gallery links – no underline, smooth pointer */
+        .gallery a {
+            display: block;
+            border-radius: 10px;
+            overflow: hidden;
+            line-height: 0;
+            cursor: pointer;
+        }
+        .gallery a:hover img {
             transform: scale(1.03);
             border-color: var(--accent-soft);
         }
@@ -394,6 +487,37 @@
     </style>
 </head>
 
+ <section class="clients-section">
+
+      <h2>Our Clients</h2>
+
+      <div class="clients-slider">
+
+        <div class="clients-slider-track">
+
+          <!-- First set of logos -->
+          <div class="clients-slide"><img src="<?php echo $base_url; ?>/images/slide-1.png" alt="Aldar Properties"></div>
+          <div class="clients-slide"><img src="<?php echo $base_url; ?>/images/slide-2.png" alt="Nakheel"></div>
+          <div class="clients-slide"><img src="<?php echo $base_url; ?>/images/slide-3.png" alt="Emaar"></div>
+          <div class="clients-slide"><img src="<?php echo $base_url; ?>/images/slide-4.png" alt="Damac"></div>
+          <div class="clients-slide"><img src="<?php echo $base_url; ?>/images/slide-5.png" alt="Client 5"></div>
+          <div class="clients-slide"><img src="<?php echo $base_url; ?>/images/slide-6.png" alt="Client 6"></div>
+
+          <!-- Second identical set (required for seamless infinite loop) -->
+          <div class="clients-slide"><img src="<?php echo $base_url; ?>/images/slide-1.png" alt="Aldar Properties"></div>
+          <div class="clients-slide"><img src="<?php echo $base_url; ?>/images/slide-2.png" alt="Nakheel"></div>
+          <div class="clients-slide"><img src="<?php echo $base_url; ?>/images/slide-3.png" alt="Emaar"></div>
+          <div class="clients-slide"><img src="<?php echo $base_url; ?>/images/slide-4.png" alt="Damac"></div>
+          <div class="clients-slide"><img src="<?php echo $base_url; ?>/images/slide-5.png" alt="Client 5"></div>
+          <div class="clients-slide"><img src="<?php echo $base_url; ?>/images/slide-6.png" alt="Client 6"></div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
 <body>
     <!-- demo context: preview footer only, intentionally no extra content -->
     <footer class="cs-footer">
@@ -411,20 +535,32 @@
                         Dubai’s trusted atelier for curtains, upholstery and timeless interiors.
                     </p>
 
-                    <!-- gallery : six images (simulated with abstract swatches) -->
+                    <!-- gallery : six images — each links to WhatsApp -->
                     <div class="gallery">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%23947962'/%3E%3Ctext x='12' y='45' fill='%23fff' font-size='12' font-family='monospace'%3E🧶 rug%3C/text%3E%3C/svg%3E" alt="custom rug 1">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%23b28b6b'/%3E%3Ctext x='12' y='45' fill='%23fff' font-size='12'%3Ecarpet%3C/text%3E%3C/svg%3E" alt="wool carpet">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%238e6b4e'/%3E%3Ctext x='10' y='45' fill='%23fff' font-size='12'%3Ecurtain%3C/text%3E%3C/svg%3E" alt="curtain">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%23ac8e6c'/%3E%3Ctext x='12' y='45' fill='%23fff' font-size='12'%3Efloor%3C/text%3E%3C/svg%3E" alt="flooring">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%23a5764e'/%3E%3Ctext x='12' y='45' fill='%23fff' font-size='12'%3Edesign%3C/text%3E%3C/svg%3E" alt="furniture">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%23c49a6c'/%3E%3Ctext x='12' y='45' fill='%23fff' font-size='12'%3Euph%3C/text%3E%3C/svg%3E" alt="upholstery">
+                        <a href="https://wa.me/+971565847696" target="_blank" aria-label="WhatsApp Us">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%23947962'/%3E%3Ctext x='12' y='45' fill='%23fff' font-size='12' font-family='monospace'%3E🧶 rug%3C/text%3E%3C/svg%3E" alt="custom rug 1">
+                        </a>
+                        <a href="https://wa.me/+971565847696" target="_blank" aria-label="WhatsApp Us">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%23b28b6b'/%3E%3Ctext x='12' y='45' fill='%23fff' font-size='12'%3Ecarpet%3C/text%3E%3C/svg%3E" alt="wool carpet">
+                        </a>
+                        <a href="https://wa.me/+971565847696" target="_blank" aria-label="WhatsApp Us">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%238e6b4e'/%3E%3Ctext x='10' y='45' fill='%23fff' font-size='12'%3Ecurtain%3C/text%3E%3C/svg%3E" alt="curtain">
+                        </a>
+                        <a href="https://wa.me/+971565847696" target="_blank" aria-label="WhatsApp Us">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%23ac8e6c'/%3E%3Ctext x='12' y='45' fill='%23fff' font-size='12'%3Efloor%3C/text%3E%3C/svg%3E" alt="flooring">
+                        </a>
+                        <a href="https://wa.me/+971565847696" target="_blank" aria-label="WhatsApp Us">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%23a5764e'/%3E%3Ctext x='12' y='45' fill='%23fff' font-size='12'%3Edesign%3C/text%3E%3C/svg%3E" alt="furniture">
+                        </a>
+                        <a href="https://wa.me/+971565847696" target="_blank" aria-label="WhatsApp Us">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%23c49a6c'/%3E%3Ctext x='12' y='45' fill='%23fff' font-size='12'%3Euph%3C/text%3E%3C/svg%3E" alt="upholstery">
+                        </a>
                     </div>
 
                     <div class="social">
                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/designfurniture26?igsh=MWxuMnJsdjV0MmliZg==" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
                     </div>
                 </div>
